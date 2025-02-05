@@ -5,7 +5,6 @@ from langchain_text_splitters import (CharacterTextSplitter,
 q1_pdf = "OpenSourceLicenses.pdf"
 q2_pdf = "勞動基準法.pdf"
 
-
 def hw02_1(q1_pdf):
     pdf_loader = PyPDFLoader(q1_pdf)
     ct_splitter = CharacterTextSplitter(chunk_overlap=0)
@@ -20,7 +19,7 @@ def hw02_2(q2_pdf):
     # 解決分頁內截斷問題
     full_text = "\n".join([page.page_content for page in pages])
 
-    regex_pattern = r"第 (?:.*) (?:條|章)"
+    regex_pattern = r"第 (?:.*) (?:條|章)(?: |\n)"
     rct_splitter = RecursiveCharacterTextSplitter(
         chunk_overlap=0,
         chunk_size=10,
